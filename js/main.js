@@ -25,9 +25,7 @@ const deleteHistoryButton = document.querySelector("#delete");
 form.addEventListener("submit", onSubmit);
 clearButton.addEventListener("click", clearForm);
 deleteHistoryButton.addEventListener("click", deleteHistory);
-/* VÄNTA MED DETTA
 fontSelect.addEventListener("change", changeFont); // eventlyssnare för typsnitt
-*/
 
 // Array som används för felmeddelanden
 let errors = [];
@@ -88,13 +86,7 @@ function displayErrors() {
   }
 }
 
-/* Ändra typsnitt på studentkortet
-function changeFont() {
-  const font = document.getElementById("font").value;
-  document.querySelector("body").style.fontFamily = font;
-} */
-
-// Skapar studentkortet 
+// Skapar studentkortet
 function createStudentCard() {
   // Hämta information från formuläret
   const fullname = fullnameInput.value.trim();
@@ -108,6 +100,14 @@ function createStudentCard() {
   // Uppdatera studentkortet
   // Lägg till studentkortet i historiken
   // Spara och uppdatera historiken
+}
+
+//Ändra typsnitt på studentkortet
+function changeFont() {
+  const font = fontSelect.value;
+  previewFullname.style.fontFamily = font;
+  previewEmail.style.fontFamily = font;
+  previewPhone.style.fontFamily = font;
 }
 
 /**
