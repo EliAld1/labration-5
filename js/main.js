@@ -45,6 +45,10 @@ function onSubmit(event) {
     // Om valideringen misslyckas, visa felmeddelanden
     displayErrors();
   }
+  // Om valideringen lyckas, skapa studentkort
+  else {
+    createStudentCard();
+  }
 }
 
 // Array som innehåller sparade studentkort
@@ -90,11 +94,17 @@ function changeFont() {
   document.querySelector("body").style.fontFamily = font;
 } */
 
-/**
- * Skapar ett studentkort och visar det på sidan.
- */
+// Skapar studentkortet 
 function createStudentCard() {
   // Hämta information från formuläret
+  const fullname = fullnameInput.value.trim();
+  const email = emailInput.value.trim();
+  const phone = phoneInput.value.trim();
+  // Uppdatera studentkortet med informationen
+  previewFullname.textContent = fullname;
+  previewEmail.textContent = email;
+  previewPhone.textContent = phone;
+
   // Uppdatera studentkortet
   // Lägg till studentkortet i historiken
   // Spara och uppdatera historiken
