@@ -91,6 +91,7 @@ function createStudentCard() {
   const fullname = fullnameInput.value.trim();
   const email = emailInput.value.trim();
   const phone = phoneInput.value.trim();
+
   // Uppdatera studentkortet med informationen
   previewFullname.textContent = fullname;
   previewEmail.textContent = email;
@@ -101,13 +102,14 @@ function createStudentCard() {
     name: fullname,
     email: email,
     phone: phone,
-    font: font // Sparas som text i historik
+    font: font, // Sparas som text i historik
   };
   // Lägg till studentkortet i historiken
-  history.push(studentCard);
-  // Spara och uppdatera historiken
+  history.unshift(studentCard);
+  /*// Spara och uppdatera historiken
   saveHistory();
   renderHistory();
+  */
 }
 
 //Ändra typsnitt på studentkortet
@@ -118,11 +120,12 @@ function changeFont() {
   previewPhone.style.fontFamily = font;
 }
 
-/**
- * Sparar historiken i localStorage.
- */
+// Spara history i localStorage
 function saveHistory() {
-  // Spara history i localStorage
+  // Läser om tidigare history array till JSON
+  const historyJSON = JSON.stringify(history);
+  // Sparar i lokalStorage
+  localStorage.setItem("studentCard", historyJSON);
 }
 
 /**
