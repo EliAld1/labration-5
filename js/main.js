@@ -25,6 +25,9 @@ const deleteHistoryButton = document.querySelector("#delete");
 form.addEventListener("submit", onSubmit);
 clearButton.addEventListener("click", clearForm);
 deleteHistoryButton.addEventListener("click", deleteHistory);
+/* VÄNTA MED DETTA
+fontSelect.addEventListener("change", changeFont); // eventlyssnare för typsnitt
+*/
 
 // Array som används för felmeddelanden
 let errors = [];
@@ -47,10 +50,6 @@ function onSubmit(event) {
 // Array som innehåller sparade studentkort
 let history = [];
 
-/**
- * Validerar formulärets inmatning.
- * @returns {boolean}
- */
 // Validerar formulärets inmatning
 function validateForm(fullname, email, phone) {
   errors = []; // Rensa tidigare felmeddelanden
@@ -71,15 +70,8 @@ function validateForm(fullname, email, phone) {
     validate = false;
   }
   return validate;
-
-  // Kontrollera formulärets obligatoriska fält
-  // Visa eventuella felmeddelanden
-  // Returnera resultatet (true eller false) av valideringen
 }
 
-/**
- * Visar felmeddelanden på sidan.
- */
 // Skriver ut felmeddelanden, loppar igenom
 function displayErrors() {
   if (errors.length > 0) {
@@ -90,9 +82,13 @@ function displayErrors() {
       errorList.appendChild(LiEl);
     }
   }
-  // Rensa tidigare felmeddelanden
-  // Skriv ut aktuella felmeddelanden till DOM
 }
+
+/* Ändra typsnitt på studentkortet
+function changeFont() {
+  const font = document.getElementById("font").value;
+  document.querySelector("body").style.fontFamily = font;
+} */
 
 /**
  * Skapar ett studentkort och visar det på sidan.
