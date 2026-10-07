@@ -101,6 +101,7 @@ function createStudentCard() {
     name: fullname,
     email: email,
     phone: phone,
+    font: font // Sparas som text i historik
   };
   // Lägg till studentkortet i historiken
   history.push(studentCard);
