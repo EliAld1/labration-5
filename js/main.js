@@ -29,6 +29,8 @@ fontSelect.addEventListener("change", changeFont); // eventlyssnare för typsnit
 
 // Array som används för felmeddelanden
 let errors = [];
+// Array som innehåller sparade studentkort
+let history = [];
 
 function onSubmit(event) {
   event.preventDefault(); // Förhindra att sidan laddas om
@@ -48,9 +50,6 @@ function onSubmit(event) {
     createStudentCard();
   }
 }
-
-// Array som innehåller sparade studentkort
-let history = [];
 
 // Validerar formulärets inmatning
 function validateForm(fullname, email, phone) {
@@ -97,9 +96,17 @@ function createStudentCard() {
   previewEmail.textContent = email;
   previewPhone.textContent = phone;
 
-  // Uppdatera studentkortet
+  const studentCard = {
+    // Skapar objekt med studentkortets information
+    name: fullname,
+    email: email,
+    phone: phone,
+  };
   // Lägg till studentkortet i historiken
+  history.push(studentCard);
   // Spara och uppdatera historiken
+  saveHistory();
+  renderHistory();
 }
 
 //Ändra typsnitt på studentkortet
