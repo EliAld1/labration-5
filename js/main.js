@@ -91,6 +91,7 @@ function createStudentCard() {
   const fullname = fullnameInput.value.trim();
   const email = emailInput.value.trim();
   const phone = phoneInput.value.trim();
+  const font = fontSelect.value;
 
   // Uppdatera studentkortet med informationen
   previewFullname.textContent = fullname;
@@ -106,7 +107,7 @@ function createStudentCard() {
   };
   // Lägg till studentkortet i historiken
   history.unshift(studentCard);
-  // Spara och uppdatera historiken
+  // Spara i (localStorage) och uppdatera historiken i DOM
   saveHistory();
   renderHistory();
 }
@@ -147,9 +148,30 @@ function renderHistory() {
   historySection.innerHTML = "";
   // Loopa igenom varje studentkort
   for (const studentCard of history) {
-    const sectionEl = document.createChild("section");
+    // Skapar section för studentkortet
+    const section = document.createElement("section");
 
-    // Skriv ut innehållet i history till DOM
+    // Namn
+    const name = document.createElement("p");
+    name.textContent = "Namn:" + " " + studentCard.name;
+    // E-post
+    const email = document.createElement("p");
+    email.textContent = "E-post:" + " " + studentCard.email;
+    // Telefonummer
+    const phone = document.createElement("p");
+    phone.textContent = "Telefon:" + " " + studentCard.phone;
+    // Typsnitt
+    const font = document.createElement("p");
+    font.textContent = "Typsnitt:" + " " + studentCard.font;
+
+    // Koppla ihop elementen
+    section.appendChild(name);
+    section.appendChild(email);
+    section.appendChild(phone);
+    section.appendChild(font);
+
+    // Lägger till i historysektion
+    historySection.appendChild(section);
   }
 }
 
@@ -158,14 +180,21 @@ function renderHistory() {
  */
 function clearForm() {
   // Återställ formulär och studentkort
+  form.reset();
+
+  // Rensar studentkort
+  previewFullname.textContent = "";
+  previewEmail.textContent = "";
+  previewPhone.textContent = "";
   // Rensa eventuella felmeddelanden
+  errorList.textContent = "";
 }
 
 /**
  * Raderar hela historiken.
  */
 function deleteHistory() {
-  // Radera sparad historik
+  // Radera sparad historik i localStorage
   // Uppdatera history och visningen på sidan
 }
 
