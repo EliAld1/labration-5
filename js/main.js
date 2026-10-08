@@ -173,17 +173,10 @@ function renderHistory() {
   }
 }
 
-/**
- * Rensar formulär, aktuellt studentkort och felmeddelanden.
- */
+//Rensar formulär, aktuellt studentkort och felmeddelanden.
 function clearForm() {
   // Återställ formulär och studentkort
   form.reset();
-
-  // Rensar studentkort
-  previewFullname.textContent = "";
-  previewEmail.textContent = "";
-  previewPhone.textContent = "";
   // Rensa eventuella felmeddelanden
   errorList.textContent = "";
 }
