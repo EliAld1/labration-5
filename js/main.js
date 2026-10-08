@@ -106,10 +106,9 @@ function createStudentCard() {
   };
   // Lägg till studentkortet i historiken
   history.unshift(studentCard);
-  /*// Spara och uppdatera historiken
+  // Spara och uppdatera historiken
   saveHistory();
   renderHistory();
-  */
 }
 
 //Ändra typsnitt på studentkortet
@@ -128,20 +127,30 @@ function saveHistory() {
   localStorage.setItem("studentCard", historyJSON);
 }
 
-/**
- * Läser in tidigare historik från localStorage.
- */
 function loadHistory() {
   // Hämta eventuell sparad historik
-  // Uppdatera history
+  const savedHistory = localStorage.getItem("studentCard");
+  // Om det finns sparat, uppdatera historik
+  if (savedHistory) {
+    history = JSON.parse(savedHistory);
+    // Visar historiken på sidan
+    renderHistory();
+  }
 }
+loadHistory();
 
 /**
  * Visar historiken på sidan.
  */
 function renderHistory() {
   // Rensa tidigare visad historik
-  // Skriv ut innehållet i history till DOM
+  historySection.innerHTML = "";
+  // Loopa igenom varje studentkort
+  for (const studentCard of history) {
+    const sectionEl = document.createChild("section");
+
+    // Skriv ut innehållet i history till DOM
+  }
 }
 
 /**
