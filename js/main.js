@@ -140,9 +140,7 @@ function loadHistory() {
 }
 loadHistory();
 
-/**
- * Visar historiken på sidan.
- */
+//Visar historiken på sidan
 function renderHistory() {
   // Rensa tidigare visad historik
   historySection.innerHTML = "";
@@ -190,23 +188,12 @@ function clearForm() {
   errorList.textContent = "";
 }
 
-/**
- * Raderar hela historiken.
- */
+// Radera sparad historik
 function deleteHistory() {
-  // Radera sparad historik i localStorage
-  // Uppdatera history och visningen på sidan
+  // localStorage
+  localStorage.removeItem("studentCard");
+  // History
+  history = [];
+  // Skriv om på skärmen
+  renderHistory();
 }
-
-// Eventlyssnare
-
-// När formuläret skickas:
-// - validera inmatningen
-// - skapa studentkort om valideringen lyckas
-
-// När användaren klickar på "Rensa"
-
-// När användaren klickar på "Radera historik"
-
-// När sidan laddas:
-// - läs in och visa eventuell tidigare historik
